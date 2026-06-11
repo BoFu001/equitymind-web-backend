@@ -2,6 +2,7 @@ import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api.routes.stream import router as stream_router
+from api.routes.health import router as health_router
 from config import APP_NAME
 
 logging.basicConfig(
@@ -20,7 +21,4 @@ app.add_middleware(
 )
 
 app.include_router(stream_router, prefix="/api/v1")
-
-@app.get("/health")
-def health():
-    return {"status": "ok", "app": APP_NAME}
+app.include_router(health_router, prefix="/api/v1")
