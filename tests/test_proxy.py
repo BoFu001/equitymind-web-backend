@@ -26,7 +26,7 @@ async def test():
             elif event_type == "token":
                 print(data.get("text", ""), end="", flush=True)
             elif event_type == "done":
-                print(f"\n[done] tickers={data.get('tickers')} intent={data.get('intent')}")
+                print(f"\n[done] tickers={data.get('tickers')} top_intent={data.get('top_intent')} sub_intent={data.get('sub_intent')}")
                 break
             elif event_type == "error":
                 print(f"\n[error] {data.get('message')}")
